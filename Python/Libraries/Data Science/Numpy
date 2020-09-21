@@ -1,0 +1,78 @@
+Importing numpy:
+    import numpy as np
+
+Arrays in Numpy are Vectors and Matrices
+VECTORS  - 1D Arrays
+MATRICES - 2D Arrays
+
+row    - number of subarrays
+column - elements in each subarray
+
+---------------------------------------------- BASIC FUNCTIONS ---------------------------------------------
+
+Converting a Python List into Numpy Array:
+    np.array(<python-list>)
+
+Get an array(list) of range of numbers:
+    np.arange(start, end, step)
+
+Get an array of zeroes:
+    VECTOR  - np.zeros(length)
+    MATRICE - np.zeros((row, column))
+
+Get an array of ones:
+    VECTOR  - np.ones(length)
+    MATRICE - np.ones((row, column))
+
+Get an array(vector) of linearly spaced numbers:
+    np.linspace(start, end, count)
+
+Get an identity array(matrice):
+    np.eye(size)
+
+Generate a Random Array:
+    Gaussian Randomness:
+        VECTOR  - np.random.rand(length)
+        MATRICE - np.random.rand(row, column)
+    Normal Randomness:
+        VECTOR  - np.random.randn(length)
+        MATRICE - np.random.randn(row, column)
+    Integers in Range:
+        VECTOR - np.random.randint(start, end, length)
+
+Reshape an Array:
+    arr.reshape(row,column)
+
+Find max/min of an Array:
+    arr.min()
+    arr.max()
+
+Find location of max/min of an Array;
+    arr.argmin()
+    arr.argmax()
+
+Know the shape of an Array:
+    arr.shape()
+
+Indexing is same as that of normal lists in Python, with the following addition:
+    arr[1][2] == arr[1,2]
+    arr[:2, 1:] (For subscripting an array)
+
+Conditional Array:
+    arr[cond]
+        example - arr[arr>3]
+    
+---------------------------------------------- OPERATIONS ---------------------------------------------
+
+Array with array operations:
+    arr + arr   arr - arr   arr * arr   arr / arr
+
+Scalar operations on array:
+    arr + 2     arr - 2     arr * 2     arr / 2
+
+Other operations:
+    np.sqrt(arr)    Square-root
+    np.exp(arr)     Exponential
+    np.sin(arr)     Sinosuidal
+    np.log(arr)     Logarithm
+    

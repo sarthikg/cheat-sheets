@@ -1,0 +1,24 @@
+                                                    SVM(Support Vector Machines)
+
+Importing the Library:
+    from sklearn import svm
+
+Creating a classifier:
+    clf = svm.SVC()
+
+Fit classifier with training data:
+    clf.fit(features, values)
+
+Predict value for a Feature:
+    clf.predict(feature)
+
+Accuracy of the Model:
+    clf.score(test_features, test_labels)
+
+
+                                                            Kernels
+
+1. Linear
+2. Polynomial
+3. rbf
+4. sigmoid

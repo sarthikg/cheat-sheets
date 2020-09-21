@@ -1,0 +1,184 @@
+Importing Pandas
+    import pandas as pd
+
+Objects in Pandas are Series and Dataframes:
+SERIES     - 1D Objects
+DATAFRAMES - 2D Objects
+
+axis = 1    => represents columns
+axis = 0    => represent rows/indexes
+
+---------------------------------------------------- SERIES ----------------------------------------------------
+
+Creating Series:
+    From List / Array:
+        pd.series(<data-list>, <index-list>)
+            - If index list not specified, default indexes are taken as 0, 1, 2, 3 .......
+            - <data-list> can be Python List or Numpy Vector
+
+    From Dictionary:
+        pd.series(<python-dictionary>)
+
+Accessing Values:
+    Using Square Brackets:
+        series[index]
+    Using Dot Notation:
+        series.index
+
+Operations:
+    Adding Series:
+        ser1 + ser2
+            - This will add up all values, but will store nan for indexes available in a single series
+
+
+---------------------------------------------------- DATAFRAME ------------------------------------------------------
+
+Creating Dataframe:
+    pd.Dataframe(<matrice-or-2dArray>, <index-list>, <column-headers-list>)
+
+Accessing Column Values:
+    Using Square Brackets:
+        df[<column-name>]
+            - This will return the series for corresponding column
+        df[<list-of-column-names>]
+            - This will return dataframe with following columns
+    Using Dot Notation:
+        df.<column-name>
+            - This will return the series for corresponsing column
+
+Accessing Row Values:
+    Using Index Name:
+        df.loc[<index-name>]
+    Using Index Position:
+        df.iloc[<index-number>]
+
+Accessing Subset:
+    df.loc[[<list-of-index-names>], [<list-of-columns>]]
+
+Adding a column:
+    df[<new-column-name>] = Operation (Example: df[<column-1>]+df[<column-2>])
+
+Dropping Column:
+    For temporary:
+        df.drop(<column-name>, axis=1)
+    For permanent:
+        df.drop(<column-name>, axis=1, inplace=True)
+
+Dropping Row/Index:
+    For temporary:
+        df.drop(<index-name>)
+    For permanent:
+        df.drop(<column-name>, inplace=True) 
+
+Transpose a Dataframe (Rows <=> Columns):
+    df.transpose()
+
+Display first 5 elements of a dataframe:
+    df.head()
+
+Display last 5 elements of a dataframe:
+    df.tail()
+
+------------------------------------------- HIGHER ORDER FUNTIONS DATAFRAME -----------------------------------------------
+
+Filtering the whole Database over a condition:
+    df[df>0]
+        -> Contains NaN
+
+Filtering a database over a condition on a specific column:
+    For condition on a single column:
+        df[df['W'] > 0]
+            -> Doesnt Contain Null
+        
+    For conditions over multiple columns:
+        df[(df['W']>0) & (df['X']>0)]
+        df[(df['W']>0) | (df['X']>0)]
+    
+Resetting Index of Database:
+    df.reset_index()
+        - requires inplace
+
+Setting Index of Database:
+    df.set_index(<column-name>)
+
+
+------------------------------------------------ DATAFRAME OPERATIONS ----------------------------------------------------
+
+Find Uniques in Column:
+    Unique Values:
+        df[<column-name>].unique()
+    Count of Unique Values:
+        df[<column-name>].nunique()
+    Count for each unique value:
+        df[<column-name>].value_counts()
+
+Apply a function on a column:
+    df[<column-name>].apply(<function-name>)
+    df[<column-name>].apply(lambda x: x*2)
+
+Get a list of all Column Names:
+    df.columns
+
+Get a list of all Indexes:
+    df.index
+
+Sort values of a dataframe by a column:
+    df.sort_values(<column-name>)
+
+
+-------------------------------------------------- DATAFRAME I/O ---------------------------------------------------------
+
+Read a CSV File:
+    df.read_csv('<file-name>.csv')
+
+Export to CSV:
+    df.to_csv('<file-name>', index=False)
+
+Read a XLSX File:
+    df.read_excel('<file-name>.xslx', sheetname='<sheet-name>')
+
+
+------------------------------------------- MULTI LEVEL INDEXING DATAFRAME -----------------------------------------------
+
+Creating Multi-level Index:
+    outside = ['G1','G1','G1','G2','G2','G2']
+    inside = ['1','2','3','1','2','3']
+    hier_index = list(zip(outside, inside))
+    hier_index = pd.MultiIndex.from_tuples(hier_index)
+
+Creating Multi-level Index Dataframe:
+    df =pd.Dataframe(randn(6,2), hier_index, ['A', 'B'])
+
+Accessing values based on Index Groups:
+    df.loc['G1']
+    df.loc['G1'].loc[1]
+
+Assign Names to Index:
+    df.index.names = ['Group', 'Num']
+
+Access a Cross-Section:
+    df.xs('G1')
+    df.xs(1, level='Num')
+
+------------------------------------------------- MISSING DATA DATAFRAME -----------------------------------------------
+
+Dropping NaN Values:
+    Base Case
+        Drop all Rows with NaN:
+            df.dropna()
+        Drop all Columns with NaN:
+            df.dropna(axis=1)
+        Drop Rows with greater than threshold non NaN values:
+            df.dropna(thresh=2)
+        
+Filling NaN Values:
+    df.fillna(value="New Value")
+
+
+------------------------------------------------- GROUPBY DATAFRAME -----------------------------------------------
+
+Structure of GroupBy Command:
+    df.groupby(<column-name>).<aggregate-function>.loc[<index-name>]
+
+To get all the aggregations for a groupby:
+    df.groupby(<column-name>).describe()

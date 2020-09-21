@@ -1,0 +1,19 @@
+                                                    GAUSSIAN BAYES THEOREM
+                                        (Should be used if order of features dont matter)
+                                    (Used widely for Spam Filters and Text based predictions)
+
+Importing the Library:
+    from sklearn.naive_bayes import GaussianNB
+
+Creating a classifier:
+    clf = GaussianNB()
+
+Fit classifier with training data:
+    clf.fit(features, values)
+
+Predict value for a Feature:
+    clf.predict(feature)
+
+Accuracy of the Model:
+    clf.score(test_features, test_labels)
+

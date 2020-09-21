@@ -1,0 +1,93 @@
+                                              BASIC DATABASE & COLLECTION COMMANDS
+
+SHOW DATABASES:
+show dbs
+
+CREATE AND SWITCH TO DB:
+use <database-name>
+
+DROP DATABASE:
+db.dropDatabase()
+
+SHOW ALL COLLECTIONS:
+show collections    OR    show tables
+
+CREATE COLLECTION:
+db.createCollection(<table-name>)
+
+DROP COLLECTION:
+db.<table-name>.drop()
+
+
+
+
+                                                       READ DATA FROM COLLECTION
+
+READ ALL DATA IN A COLLECTION:
+db.<table-name>.find({"search_key":"search_value"}, {"key": 1, "key": 0})
+
+To PRETTIFY THE DATA OBTAINED:
+db.<table-name>.find().pretty()
+
+COUNT OF DATA IN A COLLECTION:
+db.<table-name>.count()
+
+                                                            FOR SINGLE DATA
+
+CREATE COLLECTION AND INSERT SINGLE DATA:
+db.<table-name>.insertOne({"key1":"value1", "key2":"value2"})
+
+UPDATE ONE ENTRY FROM THE COLLECTION:
+db.<table-name>.updateOne({"search_key":"search_value"}, {$set:{"update_key":"update_value"}})
+
+DELETE ONE ENTRY FROM THE COLLECTION:
+db.<table-name>.deleteOne({"key":"value"})
+
+
+                                                            FOR MULTIPLE DATA
+
+CREATE COLLECTION AND INSERT MULTIPLE DATA:
+db.<table-name>.insertMany([{object1}, {object2}, ....])
+
+UPDATE MULTIPLE ENTRIES FROM THE COLLECTION:
+db.<table-name>.updateMany({"search_key":"search_value"}, {$set: {"update_key":"update_value"}})
+
+DELETE MULTIPLE ENTRIES FROM THE COLLECTION:
+db.<table-name>.deleteMany({"search_key":"search_value"})
+
+DELETE ALL ENTRIES FROM THE COLLECTION:
+db.<table-name>.deleteMany({})
+
+
+                                                            MISC COMMANDS
+
+UPDATE WITH ALL NEW VALUES
+db.<table-name>.update({"search_key":"search_value"}, {"new_key":"new_value"})
+
+
+                                                            ATOMIC OPERATORS
+
+$set - used with updateOne & updateMany to change existing key value pair, or add a new key value pair
+
+     - db.<table-name>.updateOne({"search_key":"search_value"}, {$set:{"update_key":"update_value"}})
+     - db.<table-name>.updateMany({"search_key":"search_value"}, {$set: {"update_key":"update_value"}})
+
+$gt  - used as a greater than operator
+
+     - db.<table-name>.find({"key": {$gt: "value"}})
+
+
+                                                        FOR PROGRAMMING LANGUAGES
+
+LOOP OVER RESULTS:
+db.<table-name>.forEach(()=>{})
+
+MAKE ARRAY OF RESULTS:
+db.<table-name>.toArray()
+
+
+
+
+
+
+

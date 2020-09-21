@@ -1,0 +1,29 @@
+HTML
+Importing React:        <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+Importing React-DOM:    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+Importing Babel:        <script src="https://unpkg.com/babel-standalone"></script>
+Importing JSX:          <script src="first.js" type="text/jsx"></script>
+Element where React should render:      <div id="root"></div>
+
+To pass anything apart from strings in properties:
+wrap in {} - for int, list, boolean, etc
+
+
+
+Javascript:
+Class for defining a component:
+class Hello extends React.Component {
+    render(){
+        return (
+            <div>
+                <h1>Hello World!</h1>
+            </div>
+        )
+    }
+}
+
+To render the component to DOM:
+ReactDOM.render(<Hello/>, document.getElementById('root'))
+
+To insert a Javascript Logic inside:
+Wrap inside - {}                        Example: <h1>{12*16}</h1>

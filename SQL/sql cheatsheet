@@ -1,0 +1,129 @@
+//////////////////////////////DATABASES////////////////////////////
+SHOW DATABASES
+CREATE DATABASE <dname>
+DROP DATABASE <dname>
+USE <dname>
+SELECT database()      (shows current database)
+
+
+////////////////////////////////TABLES/////////////////////////////
+CREATE TABLE <tname> (
+    <col_name> data_type,
+    <col name> data_type
+)
+
+SHOW TABLES
+SHOW COLUMNS FROM <tname>
+DESC <tname>
+DROP TABLE <tname>
+INSERT INTO <tname>(<col_name>, <col_name>)
+VALUES (<value1>, <value2>),
+       (<value3>, <value4>),
+       (<value5>, <value6>)
+
+SELECT * FROM <tname>
+SELECT <col_name>,<col_name> FROM <tname>
+SELECT * FROM <tname> WHERE <col_name>=<value>
+SELECT <col_name> AS <name> FROM <tname>
+UPDATE <tname> SET <col_name> = <new_value> WHERE <col_name> = <old_value>
+DELETE FROM <tname> WHERE <col_name> = <value>
+
+
+//////////////////////////////FUNCTIONS////////////////////////////
+CONCAT(col_name, col_name)
+CONCAT_WS('<separator', <col_name>, <col_name>)      (Concat with separator)
+SUBSTRING('<string>', start, end)       (Index is 1 based, Last digit is included,{Can be negative})
+REPLACE ('<big_string>', '<string_to_be_replaced>', '<string_to_be_replaced_with>')
+REVERSE('<string>')
+CHAR_LENGTH('<string>')
+UPPER('<string>')
+LOWER('<string>')
+COUNT(<col_name>)
+
+
+///////////////////////////////PRE-QUALIFIERS///////////////////////////
+DISTINCT <col_name>
+ORDER BY <col_name>     (ASC by default, DESC added at end)
+LIMIT <number>
+LIMIT <starting_point>,<number>
+WHERE <col_name> LIKE <'string'>
+                WILDCARDS - % (Anything)
+                            _ (Character)
+                            \ (Escape Character)
+GROUP BY <col_name>
+
+
+//////////////////////////////TABLE-VALUES///////////////////////////
+NOT NULL      (If empty field, then default value is given to it)
+DEFAULT '<value>'
+PRIMARY KEY
+AUTO_INCREMENT
+
+
+//////////////////////////////USER-MANAGEMENT///////////////////////////
+CREATE USER <user-name> IDENTIFIED BY <password>
+Inside mysql -> user table:
+    SELECT User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv from user;
+GRANT <privilege-name> ON <dname>.<tname> TO <user-name>
+        Privileges - SELECT
+                   - INSERT
+                   - CREATE
+                   - UPDATE
+                   - DELETE
+                   - ALL
+REVOKE <privilege-name> ON <dname>.<tname> FROM <user-name>    
+
+
+//////////////////////////////////TRANSACIONS/////////////////////////////
+START TRANSACTION
+SAVEPOINT <savepoint-name>
+ROLLBACK                    
+ROLLBACK TO <savepoint-name>
+COMMIT
+SET autocommit=0   (To change default autocommit)
+
+
+//////////////////////////////////LOCKS/////////////////////////////
+TABLE LOCKS
+ROW LOCKS
+COLUMN LOCKS
+
+Exclusive Lock - While someone is writing/updating, no one else can read
+    SELECT <SOMETHING> FOR UPDATE
+Shared Lock    - While someone is reading, no one else can write/update
+
+
+//////////////////////////////////EXPORT/////////////////////////////
+mysqldump -u <user-name> -p <dname> <tname> > "destination\<file-name>.<ext>"
+                    Extensions - txt
+                               - csv
+                               - sql
+                    Flags      -d    (Only layout)
+                               --all-databases
+
+
+//////////////////////////////////IMPORT/////////////////////////////
+mysqldump -u <user-name> -p <dname> <tname> < "source\<file-name>.<ext>"
+
+
+///////////////////////////////////MISC/////////////////////////////
+SHOW WARNINGS
+source <file-name.sql>
+
+
+//////////////////////////////////TIMEOUTS/////////////////////////////
+STANDARD QUERY FORMAT:
+SET <scope> <property> = <value>
+
+SCOPE:
+global
+session
+
+PROPERTIES:
+interactive_time     -> For Interactive Sessions, the one's with human at the keyboard
+wait_timeout         -> For Non-Interactive Sessions, the wait from last query executed
+lock_wait_timeout    -> Time to wait for Locks to release
+max_execution_time   -> Max Time for execution of SELECT Statements (in ms) (If 0, then timeouts not enabled)
+max_connections      -> Max Connections that can be established with the DB
+
+KILL <process-id>

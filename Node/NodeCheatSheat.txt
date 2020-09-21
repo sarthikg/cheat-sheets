@@ -1,0 +1,58 @@
+//////////////////////////Info///////////////////////////////
+Importing Packages with Node Command Line:
+    npm install packagename
+
+Importing packages in Node file:
+    var something = require('packagename')
+
+//////////////////////Code-Summation//////////////////////////
+
+npm install express
+var express = require('express')
+var app = express()
+
+//////////////////////////Info///////////////////////////////
+
+GET Request:
+    app.get('route', function(req, res) {
+        res.send('Text')
+    })
+
+Response for GET Request to unknown route:
+    app.get('*', function(req,res) {
+        res.send('text')
+    })
+
+Response for GET Request to a similar route:
+    app.get('route/:something/:something', function(req, res) {
+        var sub = req.params.name;
+        res.send('text')
+    }
+
+Starting the Server:
+    app.listen(port, function(){
+        console.log('text')
+    })
+
+//////////////////////Code-Summation//////////////////////////
+
+npm install express
+var express = require('express')
+var app = express()
+
+app.get('/', function(req, res) {
+    res.send('This is the homepage')
+})
+
+app.get('*', function(req,res) {
+    res.send('Page Not Found')
+})
+
+app.get('/:subreddit', function(req,res) {
+    var subreddit = req.params.subredditname;
+    res.send('This is ' + subreddit + ' subreddit.')
+}) 
+
+app.listen(3000, function() {
+    console.log('Server has Started!')
+})

@@ -1,0 +1,17 @@
+Container Class:
+    div class =container
+        (Adds margin space to right and left)
+
+To use Bootstrap Grid:
+    1. div class container
+    2. div class row
+    3. div class col-lg-(size)
+            (Total size for a row should be 12)
+
+            xl - extra large
+            lg - large
+            md - medium
+            sm - small
+            "absolutely nothing" - extra small
+
+

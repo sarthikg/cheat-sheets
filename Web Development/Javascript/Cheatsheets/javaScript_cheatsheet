@@ -1,0 +1,134 @@
+Alert the User by a Pop-up:
+    alert('Message!!')
+
+Prompt to get a Input from the User:
+    var answer = prompt('Question')
+
+Print in Console:
+    console.log('Message!!')
+
+AND - &&
+OR - ||
+NOT - !
+
+If-Else
+    if(condition){
+        expression
+    }
+    else if(condition) {
+        expression
+    }
+    else(condition) {
+        expression
+    }
+
+While Loop:
+    while(condition) {
+        expression
+    }
+
+For Loop:
+    for(init; condition; step) {
+        expression
+    }
+
+Check Index of a word or phase in a variable:
+    variable.indexOf('word')
+
+Defining a Function:
+    function name(arguments) {
+        expression
+    }
+
+Run a Function:
+    name(arguments)
+
+Repeating Function after every set interval:
+    setInterval(funtionName, interval)              interval in ms 
+
+
+ARRAY METHODS:
+    push:
+        array.push(value)
+    pop:
+        array.pop()
+    unshift (adds to the front of the array):
+        array.unshift(value)
+    shift (removes from the front of the array):
+        array.shift(value)
+    indexOf:
+        array.indexOf(element)
+    slice (to make a copy of array):
+        array.slice(start, end)
+    forEach (to loop a function through all values of an array):
+        array.forEach(function)
+        array.forEach(function(el){
+            console.log(el);
+        })
+
+OBJECT METHODS:
+    Declaration:
+        var name = {
+            key: value,
+            key: value
+        }
+    Accessing:
+        name['key']
+        name.key
+
+
+DOM MANIPULATION:
+    1. Selecting the Element:
+        var h1 = document.querySelector('h1')
+
+    2. Manipulating the Selected Element:
+        h1.style.color = 'pink'
+
+VIEW ALL PROPERTIES:
+    console.dir(tag)
+
+DOCUMENT METHODS:
+    document.getElementById()
+    document.getElementsByClassName()
+    document.getElementsByTagName()
+
+QUERY SELECTORS:
+    document.querySelector()
+    document.querySelectorAll()
+
+MANIPULATING STYLES WITH CSS & JAVASCRIPT:
+    Adding a Class in CSS:
+        .newclass {
+            color: blue;
+            border: 10px solid blue;
+        }
+
+    Adding the New Class to the Selected Element:
+        tag.classlist.add('newclass');
+        tag.classlist.remove('newclass');
+        tag.classlist.toggle('newclass');
+
+MANIPULATING TEXT CONTENT:
+    var tag = document.querySelector('p')
+    tag.textContent                                 To retrieve the text content 
+    tag.textContent = 'New Content'                 To alter the text content
+    tag.innerHtml                                   To retrieve the RAW HTML used in the webpage
+
+MANIPULATING ATTRIBUTES:
+    tag.getAttribute(attributename)
+    tag.setAttribute(attributename, replacementText)
+
+EVENTS:
+    Selecting an Element:
+        button.addEventListener(type, function)
+    
+J-QUERY:
+    Selecting elements:
+        $('element')
+    Changing Style of Elements:
+        $('element').css('key','value')
+    For multiple styles at once:
+        $('element').css({
+            key:'value',
+            key:'value'
+        })

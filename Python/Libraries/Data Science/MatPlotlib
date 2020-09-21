@@ -1,0 +1,82 @@
+Importing Matplotlib:
+    import matplotlib.pyplot as plt
+
+Always consult matplotlib.org and navigate to examples page to view available examples
+
+---------  Define 2 Lists, x & y  -------------
+
+To show a plot:
+    plt.show()
+
+
+------------------------------------------- BASE WAY TO CREATE PLOTS: --------------------------------------
+    
+To create a plot:
+    plt.plot(x, y)
+
+For title and x & y labels:
+    plt.title('<title>')
+    plt.xlabel('<name-of-xlabel>')
+    plt.ylabel('<name-of-ylabel>')
+
+To create subplots on a single canvas:
+    plt.subplot(nrows, ncols, plot-number)
+    plt.plot(x,y,'r')
+        - 'r' represents the color of the line here
+    
+
+------------------------------------------- OBJECTED ORIENTED WAY: ------------------------------------------
+
+To create a figure:
+    fig = plt.figure()
+        Arguments:
+            - figsize = (width, height)
+            
+To create a axes:
+    axes = fig.add_axes([space-from-left, space-from-bottom, width, height])
+
+To create a plot:
+    axes.plot(x,y)
+        - color             = 'color-name' OR 'color-code'
+        - linewidth OR lw   = '<line-width-num>'
+        - linestyle or ls   = '<line-style>'
+        - marker            = '<marker-shape>'
+        - markersize        = '<marker-size-num>'
+        - markerfacecolor   = '<marker-color>'
+        - markeredgewidth   = '<marker-width-num>'
+        - markeredgecolor   = '<marker-edge-color>'
+
+For title and x & y labels:
+    axes.set_title('<title>')
+    axes.set_xlabel('<name-of-xlabel>')
+    axes.set_ylabel('<name-of-ylabel>')
+
+To create subplots on top of each other:
+    axes1 = fig.add_axes([space-from-left, space-from-bottom, width, height])
+    axes2 = fig.add_axes([space-from-left, space-from-bottom, width, height])
+
+To set limits of x & y axis to be shown:
+    axes.set_xlim([start, end])
+    axes.set_ylim([start, end])
+
+To create subplots on a single canvas:
+    fig, axes = plt.subplots(nrow=1, ncols=2)
+        Arguments:
+            - figsize = (width, height)
+
+    Depending on total number of subplots, i.e. nrow*ncols
+        axes[0].plot(x,y)
+
+To plot multiple plots on a single axes:
+    axes.plot(x1, y1, label='plot-label')
+    axes.plot(x2, y2, label='plot-label')
+    axes.legend(loc=0)
+
+
+------------------------------------------- MISC FUNCTIONS & OPTIONS: ------------------------------------------
+
+To prevent overlapping of subplots:
+    plt.tight_layout()
+
+To save a plot in a different format:
+    fig.savefig('<name>.<ext>')

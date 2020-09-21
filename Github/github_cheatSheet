@@ -1,0 +1,143 @@
+TO INITIALISE A GIT REPOSITORY:
+git init <name>   - This will initialise a git repository with name as a new folder 
+git init .        - This will initialise a git repository within the current working directory
+
+
+TO KNOW THE STATUS OF THE GIT:
+git status
+
+
+TO ADD THE FILES TO THE STAGING AREA:
+git add <filename>  - To add a particular file to the staging Area
+git add .           - To add all files to the staging Area
+git add -A          - To stage both additions and deletions
+
+
+TO COMMIT CHANGES TO THE FILES
+git commit -m "<message>"   - To commit the changes with the given message
+git commit                  - To commit the changes with message to be written in the text editor
+git commit -a               - To add tracked files to staging area and directly commit the changes
+git commit -am "<message>"  - To add tracked files to staging area and commit with a message
+
+
+TO VIEW LOGS OF COMMITS:
+git log                 - displays logs of all the changes
+                                            --oneline      - to view changes on a single line
+                                            --graph        - askerisk based graph denoting the branching hierarchy
+                                            --decorate     - which commits are part of which branches
+                                            --all          - history of all the branches
+
+git show                - displays the differences from the last commit  (Press q to exit)
+git show <commit-id>    - displys changes from the particular commit
+
+
+TO VIEW FILES BEING TRACKED BY GIT FOR CHANGES:
+git ls-files
+
+
+TO UNSTAGE A FILE:
+git reset HEAD <filename>
+
+
+TO RESET CHANGES TO LAST KNOWN STATE IN GIT REPOSITORY:
+git checkout -- <filename>
+
+
+TO SETUP A SHORT COMMAND FOR A LONGER GIT COMMAND:
+git config --global alias.<new command after git> "<old command after git>"
+
+
+RENAMING FILE WITH GIT (Automatically Staged)
+git mv <oldfilename> <newfilename>
+
+
+DELETE FILE WITH GIT (Automatically Staged)
+git rm <filename>
+
+
+GIT IGNORE FILES OF CERTAIN TYPES/FORMATS:
+Create a file named .gitignore
+Add the name of the files to it (Example: file.log)
+Add the complete set of certain type of files (Example: *.log)
+Stage and commit the gitignore
+
+
+TO VIEW DIFFERENCES BETWEEN 2 COMMITS:
+git diff                        - Git shows differences between the last commit and the files in the working directory
+git diff <old-id> HEAD          - Used to compare two commits (HEAD is used to mark the last commit to the git repository)
+git diff <branch1> <branch2>    - To view differences between 2 branches
+
+
+TO VIEW GIT BRANCHES:
+git branch -a
+
+
+TO CREATE A NEW GIT BRANCH AND MOVE UNTRACKED CHANGES TO IT:
+git checkout -b <name-of-new-branch>
+
+
+TO SWITCH BRANCHES:
+git checkout <branchname>
+
+
+TO MERGE 2 BRANCHES:
+Checkout to the branch that you need to merge to
+git merge <branch-name>
+
+
+DELETE A BRANCH:
+git branch -d <branch-name>
+
+
+ADD A GIT TAG (Added at a milestone):
+git tag <tag-name>                      - creates a lightweight tag (applies by default to the head commit)
+git tag --list                          - shows all the git tags
+git tag -d <tag-name>                   - delete a tag
+git tag -a <tag-name> -m "message"      - creates an annotated tag (applied by default to the head commit, tag name should be usually the version number)
+git show <tag-name>                     - to view information of that tag and the underlining commit
+git tag -a <tag-name> -m "message" <commit-id>
+git tag -f <tag-name> <new-commit-id>   - to change the tag to different commit
+
+
+TO MOVE A PART TO THE WORK-IN-PROGRESS STAGE:
+git stash                       - saved the changes to work in progress
+git stash list                  - shows stashes with last commit message
+git stash pop                   - to get back to changed made to the stash
+
+
+CONNECTING A GITHUB REPOSITORY WITH LOCAL REPOSITORY:
+Copy the command from the newly created github repository
+git remote add origin git@github.com:<username>/<rep-name>.git
+git remote add origin git@github.com:sarthikg/Scripton.git
+
+PUSHING CHANGES TO GITHUB:
+git push -u origin <branch-name> --tags      -to push changes for the first time
+git push origin <branch-name> --tags         -to push changes for other times
+
+
+CLONE A REMOTE REPOSITORY:
+git clone <repository_url> <name-of-folder-to-be-made-on-local>
+
+
+UPDATING LOCAL TO REMOTE REPOSITORY (Should always pull before pushing):
+git pull            - updates the local instance of repository with the changes on the remote repository (git fetch + git merge)
+
+
+UPDATING THE LOCAL WITH CHANGED NAME OF GITHUB REPOSITORY:
+git remote set-url origin <url>
+
+
+REMOVE A FILE FROM GITHUB REPOSITORY:
+git rm <filename>
+
+
+DELETE A BRANCH:
+git branch -d <branch-name>
+
+
+UPDATING LOCAL REPOSITORY FOR DELETED BRANCHES:
+git fetch -p
+
+
+DELETING A BRANCH ON REMOTE FROM LOCAL:
+git push origin :<branch-name>

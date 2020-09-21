@@ -1,0 +1,43 @@
+from bs4 import BeautifulSoup
+import requests
+
+// requests will import all the content of the html page
+
+// Soup will have all the html in the BeautifulSoup Datatype
+soup = BeautifulSoup(html, "html.parser")
+
+//Selecting part of html
+soup.body.div
+
+//Alternatively, selection works with find also
+soup.find("div")
+soup.find_all("div")     //returns in a list format
+
+soup.find(id="first")   //returns for a particular id
+
+soup.find_all(class_="first")    //returns for a class_
+
+soup.find_all(attrs={"attribute":"value"})
+
+
+
+CSS Selectors
+id = #idname
+class = .class
+children = div > p
+descents = div p
+
+soup.select("#first")   //returns a list
+
+
+
+
+Accessing data in elements
+get_text = returns text inside the elements
+name = tagname
+attrs = dictionary of attributes
+
+
+
+soup.find("div")["id"]
+
